@@ -14,7 +14,7 @@ node {
             steps.sh "tar czvf liquibase.${timeStamp}.tar.gz src"
         }
         stage('publish results'){
-            steps.archiveArtifacts(artifacts:'**/**/*.gz')
+            steps.archiveArtifacts(artifacts:'**/*.gz')
         }
         stage('deploy') {
             String credentialId="user-password-database-azure"
