@@ -21,6 +21,8 @@ node {
                  ]) {
                     String liquibaseExec = "liquibase --url='jdbc:sqlserver://liquibase.database.windows.net:1433;database=liquibase_db;'"
                                             + " --changeLogFile=/src/changelog.xml --username='${env.databaseUser}' --password='${env.databasePassword}' --logLevel=debug update"
+                    
+                    steps.echo "liquibaseExec: ${liquibaseExec}"
                     steps.sh "docker run --rm --network=host -v '${env.WORKSPACE}:/home/liquibase/'  ${liquibaseImage} ${liquibaseExec}"
 
                  }
