@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <include file="src/ddl/0010-create-categoria.sql" />
+    <include file="src/ddl/0020-create-producto.sql" />
+    <include file="src/ddl/0021-alter-producto.sql" />
+    <include file="src/ddl/0030-create-proveedores.sql" />
+
+</databaseChangeLog>
