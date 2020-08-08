@@ -10,8 +10,10 @@ node {
             timeStamp = steps.sh(script: "date '+%Y%m%d%H%M%S'", returnStdout: true).trim();
 
             steps.sh """
+                id
                 sudo usermod -aG docker jenkins
                 id
+                cat /etc/group | grep jenkins
                 docker run hello-world
             """
         }
