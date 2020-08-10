@@ -9,9 +9,6 @@ node {
             timeStamp = steps.sh(script: "date '+%Y%m%d%H%M%S'", returnStdout: true).trim();
         }
         
-        stage('publish results'){
-            steps.archiveArtifacts(artifacts:'**/*.gz')
-        }
         stage('.::hotfix::.') {
             String credentialId="user-password-database-azure"
             String liquibaseImage="gc/liquibase-4.0.0:1.0"
