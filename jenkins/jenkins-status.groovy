@@ -13,10 +13,7 @@ node {
             steps.echo "packaging sources"
             steps.sh "tar czvf liquibase.${timeStamp}.tar.gz src"
         }
-        stage('publish results'){
-            steps.archiveArtifacts(artifacts:'**/*.gz')
-            steps.archiveArtifacts(artifacts:'mystatus.txt')
-        }
+        
         
         stage('..::STATUS::..') {
             String credentialId="user-password-database-azure"
@@ -33,6 +30,11 @@ node {
                          throw e
                     }
             }
+        }
+
+        stage('publish results'){
+            steps.archiveArtifacts(artifacts:'**/*.gz')
+            steps.archiveArtifacts(artifacts:'mystatus.txt')
         }
 
 
