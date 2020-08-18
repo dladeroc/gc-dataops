@@ -15,6 +15,7 @@ node {
         }
         stage('publish results'){
             steps.archiveArtifacts(artifacts:'**/*.gz')
+            steps.archiveArtifacts(artifacts:'**/mystatus.txt')
         }
         
         stage('..::STATUS::..') {
