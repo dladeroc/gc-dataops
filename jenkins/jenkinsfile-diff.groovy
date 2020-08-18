@@ -24,7 +24,7 @@ node {
                  [$class: "UsernamePasswordMultiBinding", credentialsId: credentialId, usernameVariable: 'databaseUser', passwordVariable: 'databasePassword']
                  ]) {
                      try{
-                         String liquibaseExec="liquibase --url='jdbc:sqlserver://liquibase.database.windows.net:1433;database=liquibase_dev;' --changeLogFile=/src/changelog.xml --username='${env.databaseUser}' --password='${env.databasePassword}' --logLevel=info snapshot"
+                         String liquibaseExec="liquibase --outputFile=mydiff.txt --url='jdbc:sqlserver://liquibase.database.windows.net:1433;database=liquibase_dev;' --changeLogFile=/src/changelog.xml --username='${env.databaseUser}' --password='${env.databasePassword}' --logLevel=info --referenceUrl='jdbc:sqlserver://liquibase.database.windows.net:1433;database=liquibase_cert;' --referenceUsername='${env.databaseUser}' --referencePassword='${env.databasePassword}' diff"
 
                          steps.echo "liquibaseExec: ${liquibaseExec}"
                          steps.sh "docker run --rm --network=host -v '${env.WORKSPACE}:/home/liquibase/'  ${liquibaseImage} ${liquibaseExec}"
